@@ -1,0 +1,38 @@
+* {
+  text-align: center;
+}
+
+#game {
+  width: 60%;
+  height: 60%;
+  margin: 4vw;
+  border: 2px solid black;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.front,.back {
+  height: 150px;
+  width: 90px;
+  position: absolute;
+}
+
+.card {
+  /* display: flex; */
+  height: 150px;
+  width: 90px;
+  background-size: contain;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+
+.flipped :first-child {
+  z-index: 1;
+}
