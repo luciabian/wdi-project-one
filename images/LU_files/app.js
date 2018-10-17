@@ -57,8 +57,6 @@ const startBtn = document.querySelector('.start');
 const game = document.getElementById('game');
 const grid = document.createElement('section');
 const message = document.querySelector('.message p');
-const firstWindow = document.querySelector('.welcome-page');
-const gamePage = document.querySelector('.actual-game');
 
 const pairsArray = cardsArray.concat(cardsArray);
 const shuffleArray = pairsArray.sort(() => 0.5 - Math.random());
@@ -79,12 +77,25 @@ function flipAllCardsBack(){
 }
 
 function resetGame(){
+  // const cards = document.querySelectorAll('.card');
+  // console.log('this is cards', cards);
+  // cards.forEach(card => {
+  //   // console.log('this isgrid', grid);
+  //   // console.log('this is card', card);
+  //   grid.removeChild(card);
+  //
+  // });
+  shuffleArray;
+
   flipAllCardsBack();
   showAllCards();
   setTimeout(function(){
     flipAllCardsBack();
   }, 1500);
-  pairsFound = 0;
+
+  // allCardBacks.forEach(function(card) {
+  //   card.addEventListener('click', flipCard);
+  // });
 }
 
 
@@ -155,15 +166,11 @@ function flipCard(event){
       // console.log('you found a match geniussssssss');
       cardsInPlay = [];
       if (pairsFound === 2){
-        message.innerHTML = 'You won!';
-        message.style.zIndex = 4;
-        gamePage.style.zIndex = -1;
+        message.innerHTML = 'You won!💥💥💥';
         console.log('you win');
         setTimeout(function(){
           message.innerHTML = '';
-          message.style.zIndex = -1;
-          gamePage.style.zIndex = 0;
-        }, 10000);
+        }, 3000);
       }
     } else {
       const targetCard = cardsArray.find(card => card.name === event.target.dataset.name);
@@ -178,8 +185,6 @@ function flipCard(event){
 //START THE GAME
 
 startBtn.addEventListener('click', function(){
-  firstWindow.style.zIndex = -1;
-  gamePage.style.zIndex = 0;
   showAllCards();
   setTimeout(function(){
     flipAllCardsBack();
