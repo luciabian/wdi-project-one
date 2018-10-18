@@ -1,54 +1,63 @@
-//ESTE ES MI CODIG0
 const cardsArray = [
   {
     name: 'card1',
-    frontImg: './images/image1.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/1.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card2',
-    frontImg: './images/image2.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/2.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card3',
-    frontImg: './images/image3.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/3.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card4',
-    frontImg: './images/image4.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/4.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card5',
-    frontImg: './images/image5.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/5.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card6',
-    frontImg: './images/image6.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/6.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card7',
-    frontImg: './images/image7.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/7.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card8',
-    frontImg: './images/image8.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/8.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card9',
-    frontImg: './images/image11.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/9.jpg',
+    backImg: './images/pititas.jpg'
   },
   {
     name: 'card10',
-    frontImg: './images/image10.jpg',
-    backImg: './images/backimage.jpg'
+    frontImg: './images/10.jpg',
+    backImg: './images/pititas.jpg'
+  },
+  {
+    name: 'card11',
+    frontImg: './images/11.jpg',
+    backImg: './images/pititas.jpg'
+  },
+  {
+    name: 'card12',
+    frontImg: './images/12.jpg',
+    backImg: './images/pititas.jpg'
   }
 ];
 
@@ -59,16 +68,17 @@ const grid = document.createElement('section');
 const message = document.querySelector('.message p');
 const firstWindow = document.querySelector('.welcome-page');
 const gamePage = document.querySelector('.actual-game');
+const time = document.querySelector('.timer');
 
 const pairsArray = cardsArray.concat(cardsArray);
 const shuffleArray = pairsArray.sort(() => 0.5 - Math.random());
 let cardsInPlay = [];
 let firstCard;
 let pairsFound = 0;
+const audio = new Audio('sounds/pew.wav');
 
 grid.setAttribute('class', 'grid');
 game.appendChild(grid);
-
 
 
 function showAllCards(){
@@ -86,8 +96,6 @@ function resetGame(){
   }, 1500);
   pairsFound = 0;
 }
-
-
 
 function createCard(item){
   const card = document.createElement('div');
@@ -114,7 +122,6 @@ const allCardBacks = document.querySelectorAll('.back');
 const flippedCards = document.querySelectorAll('.flipped');
 
 function checkForMatch() {
-  // console.log('Checking for match', cardsInPlay);
   const firstCard = cardsInPlay[0].getAttribute('data-name');
   const secondCard = cardsInPlay[1].getAttribute('data-name');
   if (firstCard === secondCard){
@@ -126,44 +133,38 @@ function checkForMatch() {
 }
 
 function flipCard(event){
-  // console.log('this is the event', event);
   const clickedBack = event.target;
   const clickedCard = clickedBack.parentElement;
-  // console.log('this is the clicked card', clickedBack);
 
   clickedCard.classList.add('flipped');
   cardsInPlay.push(clickedBack.parentElement);
-  // console.log('cardsInPlay is', cardsInPlay);
   const targetCard = cardsArray.find(card => card.name === event.target.dataset.name);
-  // console.log(targetCard);
 
   if(cardsInPlay.length === 1) {
     firstCard = event.target;
   }
 
-
   function removeClass(card){
     card.classList.remove('flipped');
   }
+
   function flipBack() {
     removeClass(cardsInPlay[0]);
     removeClass(cardsInPlay[1]);
   }
+
   if (cardsInPlay.length === 2){
     const match = checkForMatch();
     if(match){
-      // console.log('you found a match geniussssssss');
       cardsInPlay = [];
-      if (pairsFound === 2){
+      if (pairsFound === 12){
         message.innerHTML = 'You won!';
         message.style.zIndex = 4;
-        gamePage.style.zIndex = -1;
-        console.log('you win');
+        // console.log('you win');
         setTimeout(function(){
           message.innerHTML = '';
-          message.style.zIndex = -1;
-          gamePage.style.zIndex = 0;
-        }, 10000);
+          message.style.zIndex = 0;
+        }, 5000);
       }
     } else {
       const targetCard = cardsArray.find(card => card.name === event.target.dataset.name);
@@ -177,7 +178,9 @@ function flipCard(event){
 
 //START THE GAME
 
+
 startBtn.addEventListener('click', function(){
+  audio.play();
   firstWindow.style.zIndex = -1;
   gamePage.style.zIndex = 0;
   showAllCards();
@@ -190,4 +193,7 @@ startBtn.addEventListener('click', function(){
 });
 
 
-resetBtn.addEventListener('click', resetGame)
+resetBtn.addEventListener('click', resetGame);
+resetBtn.addEventListener('click', function(){
+  audio.play();
+});

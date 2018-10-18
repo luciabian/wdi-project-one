@@ -7,18 +7,28 @@ header {
   text-align: center;
 }
 
-main {
-}
-
 h1 {
-  font-size: 250px;
+  font-size: 200px;
   text-align: center;
   font-family: 'Chivo', sans-serif;
-  /* color: #b5c641; */
-  color: #cece56;
-  text-shadow: 15px 15px #75821f;
+  color: pink;
+  text-shadow: 15px 15px #e52424;
+  animation: grow 4s infinite;
 }
 
+@keyframes grow {
+  0% {
+    font-size: 250px;
+    top: 0%
+  }
+  50% {
+    font-size: 300px;
+  }
+  100% {
+    font-size: 250px;
+    top: 20%;
+  }
+}
 
 .results {
   display: flex;
@@ -27,40 +37,72 @@ h1 {
 }
 
 button {
-  background-color: black;
-  color: white;
-  border: 1px solid black;
-  border-radius: 10%;
-  width: 200px;
-  height: 100px;
-  font-size: 30px;
-  /* margin: 10px; */
+  border-radius: 5%;
 }
 
 .start {
+  font-family: 'Chivo', sans-serif;
+  font-size: 60px;
+  font-weight: 900;
   position: absolute;
-  top: 80%;
+  text-align: center;
+  top: 85%;
   left: 45%;
+  background-color: #a39c15;
+  border: 1px solid #a39c15;
+  color: #dbdbdb;
+  text-shadow: 4px 4px black;
+  /* box-shadow: 10px 10px #494605; */
+  width: 250px;
+  height: 100px;
+  box-shadow: 8px 8px #666;
+}
+
+
+.start:hover{
+  background-color: #847e0f;
+  border: 1px solid #847e0f;
+}
+
+.start:active {
+  background-color: #847e0f;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
 }
 
 .reset {
-  margin-left: 45%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-left: 42%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: pink;
+  color: #a39c15;
+  border: 1px solid pink;
+  font-family: 'Chivo', sans-serif;
+  box-shadow: 7px 7px #ff667d;
+  /* box-shadow: 8px 8px #666; */
+  font-size: 45px;
+  font-weight: 900;
+  text-shadow: 2px 2px #494605;
+  width: 350px;
+  height: 90px;
+}
+
+.reset:hover {
+  background-color: #ff99a8;
+  border: 1px solid #ff99a8;
+}
+
+.reset:active {
+  background-color: #ff99a8;
+  box-shadow: 0 5px #ff667d;
+  transform: translateY(4px);
 }
 
 #game {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100%;
-  height: 100%; */
-  /* background-color: orange; */
-  /* width: 600px;
-  height: 700px; */
   top: 20%;
-  /* margin: 4vw; */
-  /* border: 2px solid black; */
 }
 
 .grid {
@@ -68,61 +110,87 @@ button {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: 560px;
-  height: 690px;
-  /* background-color: pink; */
+  width: 85%;
+  height: 50%;
+  border-radius: 3%;
+  /* border: 4px solid black; */
 }
 
 
 .front,.back {
-  height: 150px;
-  width: 90px;
+  height: 250px;
+  width: 180px;
+  background-size: contain;
   border-radius: 5%;
+  border: 3px solid black;
   position: absolute;
-  border: 1px solid black;
   /* margin: 10px; */
 }
 
 .card {
-  height: 150px;
-  width: 90px;
-  border-radius: 5%;
+  height: 250px;
+  width: 180px;
   background-size: contain;
+  border-radius: 5%;
   border: 1px solid black;
   margin: 10px;
-  box-sizing: content-box;
+}
+
+.card,.back:hover {
+  transform: translateY(3px);
 }
 
 .flipped :first-child {
   z-index: 1;
 }
 
-.flipped {
-
+.flipped:active{
+ transform: skewY(360);
 }
 
 .message {
-  /* z-index: 0; */
+  z-index: 2;
   position: absolute;
   top: 20%;
   left: 10%;
-  font-size: 120px;
-  background-color: orange;
+  right: 10%;
+  font-size: 300px;
+  text-align: center;
+  font-family: 'Chivo', sans-serif;  color: white;
+  /* text-shadow: 15 15 orange; */
+  background-color: rgb(255, 158, 40, 0.830);
   color: white;
+  animation: growing 2s infinite;
 }
 
+@keyframes growing {
+  0% {
+    font-size: 250px;
+    font-weight: 900;
+  }
+  50% {
+    font-size: 300px;
+    font-weight: 900;
+  }
+  100% {
+    font-size: 250px;
+    font-weight: 900;
+  }
+}
 .welcome-page {
   z-index: 2;
   position: absolute;
   font-size: 400px;
-  background-color: #f29396;
+  background-image: url(./images/giphy.gif);
+  background-size: cover;
+  background-size: 30%;
   width: 100%;
   height: 100%;
 }
 .actual-game {
   z-index: 1;
   position: absolute;
-  background-color: white;
+  background-color: black;
   width: 100%;
   height: 100%;
 }

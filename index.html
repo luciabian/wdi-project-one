@@ -5,25 +5,26 @@
   <title>LU</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
   <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Chivo:900" rel="stylesheet"></head>
-<body>
+  <link href="https://fonts.googleapis.com/css?family=Chivo:900" rel="stylesheet"><body>
+  </head>
   <section class="welcome-page">
-  <header>
-    <h1>MEMORY GAME</h1>
-    <button type="button" name="button" class="start">START</button>
+    <header>
+      <h1>MEMORY GAME</h1>
+      <button type="button" name="button" class="start">START</button>
+    </header>
+  </section>
+  <section class="actual-game">
     <div class="message">
       <p></p>
     </div>
-  </header>
-</section>
-<section class="actual-game">
-  <main>
-    <button type="button" name="button" class="reset">PLAY AGAIN</button>
-    <div id="game">
+    <main>
+      <button type="button" name="button" class="reset">PLAY AGAIN</button>
+      <div class="timer"></div>
+      <div id="game">
 
-    </div>
-  </main>
-</section>
+      </div>
+    </main>
+  </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="app.js" charset="utf-8"></script>
 </body>
